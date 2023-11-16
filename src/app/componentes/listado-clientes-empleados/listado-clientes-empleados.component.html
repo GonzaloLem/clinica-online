@@ -1,0 +1,43 @@
+<section class="listado-turnos">
+    <h2 class="m-4">Listado de turnos</h2>
+    <ul class="list-group lista" *ngFor="let turno of turnos">
+        <li class="list-group-item item">
+           <div class="informacion">
+            <span>
+              Especialdiad: {{turno.especialidad}}  
+           </span>
+           <span>
+              Fecha: {{turno.fecha}}/{{turno.mes}}
+           </span>
+           <span>
+              Horario: {{turno.horario | mostrar}} 
+           </span>
+           <span class="estado" [class]="turno.estado === 'Aceptado'?'aceptado':turno.estado === 'Rechazado'?'rechazado':turno.estado === 'Cancelado'?'cancelado':turno.estado === 'Realizado'?'realizado':''">
+              {{turno.estado}}
+           </span>
+          </div> 
+           <div class="opciones">
+                <button type="button" class="btn btn-success boton" *ngIf="comprobarAccion(turno.estado, 'Aceptado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Aceptado')">Aceptar</button>
+                <button type="button" class="btn btn-danger boton" *ngIf="comprobarAccion(turno.estado, 'Rechazado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Rechazado')">Rechazar</button>
+                <button type="button" class="btn btn-warning boton" *ngIf="comprobarAccion(turno.estado, 'Cancelado')" (click)="cambiarEstadoTurno(turno, 'Cancelado')">Cancelar</button>
+                <button type="button" class="btn btn-secondary boton" *ngIf="comprobarAccion(turno.estado, 'Realizado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Realizado')">Finalizar</button>
+                <button type="button" class="btn btn-info boton" *ngIf="turno['comentario']" (click)="verComentario(turno['comentario'])">Ver Reseña</button>
+           </div>
+        </li>
+      </ul>
+      <section class="comentario" *ngIf="mostrarComentario">
+        <h2 class="m-4">Comentario</h2>
+        <div [formGroup]="formulario" class="input-group">
+            <span class="input-group-text"></span>
+            <textarea class="form-control ip-comentario" id="txtComentario" formControlName="txtComentario"></textarea>
+          </div>
+          <button type="button" class="btn btn-primary btn-lg m-4" (click)="enviarCambiosTurno()">Enviar</button>
+      </section>
+
+      <div *ngIf="mostrarResenia" class="reseña">
+        <h2>Reseña del turno</h2>
+        <p>{{ comentario }}</p>
+        <button type="button" class="btn btn-primary btn-lg m-4" (click)="cerrarResenia()" >Cerrar</button>
+      </div>
+</section>
+

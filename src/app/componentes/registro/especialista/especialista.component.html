@@ -1,0 +1,27 @@
+<!-- lo toma todo bien -->
+<form [formGroup]="formulario" class="formulario">
+    <h2>Especialidades</h2>
+    <div class="mx-2 colum g-3 align-items-center especialidades">
+        <button *ngFor="let item of listaEspecialidades" type="button" class="btn btn-primary" (click)="setEspecialidad(item.especialidad)">{{item.especialidad}}</button>
+        <button  type="button" class="btn btn-primary" (click)="cambiarEstadoContenedorEspecialidad()">Otro</button>
+    </div>
+    <section *ngIf="mostrarContenedorEspecialidad" class="especialidad">
+        <div class="mx-2 colum g-3 align-items-center">
+            <div class="col-auto">
+            <label for="txtObraSocial" class="col-form-label">Especialidad</label>
+            </div>
+            <div class="col-auto">
+            <input type="text" id="txtEspecialidad" formControlName="txtEspecialidad" class="form-control">
+            </div>
+            <div class="col-auto">
+            <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+            (formulario.controls['txtEspecialidad'].errors?.['pattern'] && formulario.controls['txtEspecialidad'].touched)||
+            (formulario.controls['txtEspecialidad'].errors?.['minlength'] && formulario.controls['txtEspecialidad'].touched)">
+                Especialidad Invalida.
+            </span>
+            </div>
+        </div>
+    </section>
+</form>
+
+

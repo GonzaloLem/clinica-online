@@ -1,0 +1,25 @@
+<ul class="list-group">
+    <li class="list-group-item">
+        <ul class="lista">
+            <li class="separacion">Nombre</li>
+            <li class="separacion">Apellido</li>
+            <li class="separacion">DNI</li>
+            <li class="separacion">Email</li>
+            <li class="separacion">Perfil</li>
+            <li class="separacion">Opciones</li>
+        </ul>
+    </li>
+</ul>
+<ul class="list-group">
+    <li *ngFor="let user of listado; let i = index; trackBy: trackByFn" class="list-group-item item">
+        <ul class="lista">
+            <li class="separacion">{{user.datos.nombre}}</li>
+            <li class="separacion">{{user.datos.apellido}}</li>
+            <li class="separacion">{{user.datos.dni}}</li>
+            <li class="separacion">{{user.datos.mail}}</li>
+            <li class="separacion">{{user.perfil}}</li>
+            <button *ngIf="user.perfil == 'Paciente'" type="button" class="btn btn-primary separacion-boton">{{'Mail Verificado: '}}{{user.datos.emailVerificado | booleanos }}</button>
+            <button *ngIf="user.perfil == 'Especialista'" type="button" class="btn btn-primary separacion-boton" (click)="activarDesactivar_cuentaEspecialista(i)">{{user.datos.cuentaActivada?'Desactivar':'Activar'}}</button>
+        </ul>
+    </li>
+</ul>

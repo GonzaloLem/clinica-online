@@ -1,0 +1,66 @@
+.main 
+{
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(203, 25, 25);
+}
+
+.main .login
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.main .form
+{
+
+    padding: 80px;
+    border: 1px solid rgba(51, 51, 51,0.8);
+    border-radius: 5%;
+
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
+}
+
+.form .boton 
+{
+    width: 100%;
+}
+
+.main .lista-usuarios
+{
+
+    display: flex;
+    gap: 10px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(51, 51, 51, 0.8);
+
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+
+.login .card
+{
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgba(51, 51, 51, 0.8);
+    cursor: pointer;
+}
+
+.login .img 
+{
+    border-radius: 10px;
+}
+

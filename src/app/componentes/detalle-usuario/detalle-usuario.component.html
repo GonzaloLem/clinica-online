@@ -1,0 +1,13 @@
+<section class="usuario">
+    <div class="foto-perfil">
+        <img *ngFor="let imagen of usuario?.ImagenPerfil" [src]="imagen" alt="imagen perfil del usuario">
+    </div>
+    <div class="informacion">
+        <span>Nombre: {{usuario?.Nombre}}</span>
+        <span>Apellido: {{usuario?.Apellido}}</span>
+        <span>Edad: {{usuario?.Edad}}</span>
+        <span>DNI: {{usuario?.DNI}}</span>
+        <span>Email: {{usuario?.Mail}}</span>
+    </div>
+</section>
+

@@ -1,0 +1,13 @@
+.horarios
+{
+    text-align: center;
+}
+
+.lista-horarios
+{
+    display: flex;
+    justify-content: center;
+
+    margin: 60px;
+    gap: 10px;
+}

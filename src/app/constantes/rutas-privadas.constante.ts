@@ -1,0 +1,1 @@
+export const RUTAS_PRIVADAS:string[] = ["/usuarios","/perfil", "/solicitar/turno"];

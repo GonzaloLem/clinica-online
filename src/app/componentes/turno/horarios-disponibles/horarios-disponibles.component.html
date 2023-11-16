@@ -1,0 +1,37 @@
+<section class="contenedor-ds">
+    <section class="disponibilidad-horaria" [style.gridTemplateColumns]="'repeat(' + (dias.length+1) + ', 1fr)'">
+        <span class="texto">Horarios</span>
+        <!--<ul class="lista ls-dias">
+            <li class="dias" *ngFor="let dia of dias">{{dia}}</li>
+        </ul>-->
+        <div class="dias" *ngFor="let dia of dias">{{dia}}</div>
+        <ul class="lista ls-horarios">
+            <li class="horario" *ngFor="let horario of horarios">{{horario}}</li>
+        </ul>
+        <!--<section class="tabla-horarios">
+            <div class="horarios" >
+                <div *ngFor="let disponibilidadDia of disponibilidad" class="item-dia">
+                    <span *ngFor="let hr of disponibilidadDia" class="item-horario">
+                        {{hr?.disponible | booleanos}}    
+                    </span>
+                </div>
+            </div>
+        </section>-->
+            <div *ngFor="let disponibilidadDia of disponibilidad; let i = index" class="item-dia">
+                <span *ngFor="let hr of disponibilidadDia; let j = index" class="item-horario">
+                    <div [class]="hr.disponible?'casilla-disponible':'casilla-ocupada'" 
+                    [class.casilla-seleccionada]="casillaMarcada.i === i && casillaMarcada.j === j" 
+                    (click)="hr.disponible?marcarTurno(i,j):null">.</div>   
+                </span>
+            </div>
+    </section>
+    <form [formGroup]="formulario">
+        <ngx-recaptcha2 #captchaElem
+          [siteKey]="siteKey"
+          formControlName="recaptcha">
+        </ngx-recaptcha2>
+      </form>
+    <button  [disabled]="!(turnoSeleccionado.length !== 0)" type="button" class="btn btn-primary btn-lg" (click)="sacarTurno()">Sacar Turno Online</button>
+</section>
+
+<!--[style.gridTemplateColumns]="'repeat(' + dias.length + ', 1fr)'"-->

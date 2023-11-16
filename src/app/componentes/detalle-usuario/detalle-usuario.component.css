@@ -1,0 +1,21 @@
+.usuario
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.usuario .foto-perfil
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.usuario .informacion
+{
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}

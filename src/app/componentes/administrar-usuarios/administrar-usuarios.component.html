@@ -1,0 +1,7 @@
+<app-header></app-header>
+<app-listado-usuarios></app-listado-usuarios>
+<section class="registro">
+    <button type="button" class="btn btn-primary boton" (click)="mostrarFormulario()">Registrar Administrador</button>
+    <app-administrador *ngIf="administrador" (outPutDatosUsuario)="obtenerDatosUsuarioBasico($event)"></app-administrador>
+    <button type="button" *ngIf="administrador" class="btn btn-primary" (click)="registrar()">Registrar</button>
+</section>

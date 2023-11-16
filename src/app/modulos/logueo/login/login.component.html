@@ -1,0 +1,58 @@
+<main class="main">
+    <section class="login">
+        <div class="lista-usuarios">
+          <div class="card" style="width: 6rem;">
+            <img src="../../../../assets/paciente.jpg" class="card-img-top img" alt="paciente" (click)="autoLogin({email:'martina@gmail.com', password:'martu123'})">
+          </div>
+          <div class="card" style="width: 6rem;">
+            <img src="../../../../assets/paciente.jpg" class="card-img-top img" alt="paciente" (click)="autoLogin({email:'graciela@gmail.com', password:'123'})">
+          </div>
+          <div class="card" style="width: 6rem;">
+            <img src="../../../../assets/paciente.jpg" class="card-img-top img" alt="paciente" (click)="autoLogin({email:'pao@gmail.com', password:'pao123'})">
+          </div>
+          <div class="card" style="width: 6rem;">
+            <img src="../../../../assets/especialista.jpg" class="card-img-top img" alt="especialista" (click)="autoLogin({email:'gonzalonl308@gmail.com', password:'gonza123'})">
+          </div>
+          <div class="card" style="width: 6rem;">
+            <img src="../../../../assets/especialista.jpg" class="card-img-top img" alt="especialista" (click)="autoLogin({email:'leo@gmail.com', password:'leo123'})">
+          </div>
+          <div class="card" style="width: 6rem;">
+            <img src="../../../../assets/administrador.jpg" class="card-img-top img" alt="administrador" (click)="autoLogin({email:'admin@gmail.com', password:'admin'})">
+          </div>
+      </div>
+        <form [formGroup]="formulario" class="form">
+          <h2>¡Logueate!</h2>
+            <div class="colum align-items-center">
+                <div class="col-auto">
+                    <label for="email" class="col-form-label">Email</label>
+                  </div>
+                  <div class="col-auto">
+                    <input type="text" id="txtEmail" formControlName="txtEmail" class="form-control">
+                  </div>
+                  <div class="col-auto">
+                    <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                    (formulario.controls['txtEmail'].errors?.['email'] && formulario.controls['txtEmail'].touched)">
+                      Email invalido.
+                    </span>
+                  </div>
+                <div class="col-auto">
+                  <label for="password" class="col-form-label">Contraseña</label>
+                </div>
+                <div class="col-auto">
+                  <input type="password" id="txtPassword" formControlName="txtPassword"class="form-control" >
+                </div>
+                <div class="col-auto">
+                  <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                  (formulario.controls['txtPassword'].errors?.['pattern'] && formulario.controls['txtPassword'].touched)||
+                  (formulario.controls['txtPassword'].errors?.['minlength'] && formulario.controls['txtPassword'].touched)">
+                    Contraseña Invalida.
+                  </span>
+                </div>
+              </div>
+              <button type="button" class="boton btn btn-primary btn-lg mt-4" (click)="login()">Login</button>
+              <button type="button" class="boton btn btn-primary btn-lg mt-1" routerLink="/bienvenido">Volver</button>
+        </form>
+    </section>
+
+</main>
+

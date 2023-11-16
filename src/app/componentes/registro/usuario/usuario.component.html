@@ -1,0 +1,105 @@
+<!-- lo toma todo bien -->
+<form [formGroup]="formulario" class="formulario">
+    <div class="colum g-3 justify-content-center">
+        <div class="input-group mb-3 a">
+            <div class="mx-2 colum g-3 align-items-center">
+                <div class="col-auto">
+                <label for="txtNombre" class="col-form-label">Nombre</label>
+                </div>
+                <div class="col-auto">
+                <input type="text" id="txtNombre" formControlName="txtNombre" class="form-control">
+                </div>
+                <div class="col-auto">
+                <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                (formulario.controls['txtNombre'].errors?.['pattern'] && formulario.controls['txtNombre'].touched)||
+                (formulario.controls['txtNombre'].errors?.['minlength'] && formulario.controls['txtNombre'].touched)">
+                    Nombre invalido.
+                </span>
+                </div>
+            </div>
+            <div class="mx-2 colum g-3 align-items-center">
+                <div class="col-auto">
+                <label for="txtApellido" class="col-form-label">Apellido</label>
+                </div>
+                <div class="col-auto">
+                <input type="text" id="txtApellido" class="form-control" formControlName="txtApellido">
+                </div>
+                <div class="col-auto">
+                <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                (formulario.controls['txtApellido'].errors?.['pattern'] && formulario.controls['txtApellido'].touched)||
+                (formulario.controls['txtApellido'].errors?.['minlength'] && formulario.controls['txtApellido'].touched)">
+                    Apellido Invalido.
+                </span>
+                </div>
+            </div>
+            <div class="mx-2 colum g-3 align-items-center">
+                <div class="col-auto">
+                <label for="txtEdad" class="col-form-label">Edad</label>
+                </div>
+                <div class="col-auto">
+                <input type="text" id="txtEdad" formControlName="txtEdad" class="form-control">
+                </div>
+                <div class="col-auto">
+                <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                (formulario.controls['txtEdad'].errors?.['pattern'] && formulario.controls['txtEdad'].touched)||
+                (formulario.controls['txtEdad'].errors?.['minlength'] && formulario.controls['txtEdad'].touched)">
+                    Edad Invalida
+                </span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3 a">
+            <div class="mx-2 colum g-3 align-items-center">
+                <div class="col-auto">
+                <label for="txtDni" class="col-form-label">DNI</label>
+                </div>
+                <div class="col-auto">
+                <input type="text" id="txtDni" formControlName="txtDni" class="form-control">
+                </div>
+                <div class="col-auto">
+                <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                (formulario.controls['txtDni'].errors?.['pattern'] && formulario.controls['txtDni'].touched)||
+                (formulario.controls['txtDni'].errors?.['minlength'] && formulario.controls['txtDni'].touched)">
+                    DNI invalido.
+                </span>
+                </div>
+            </div>
+            <div class="mx-2 colum g-3 align-items-center">
+                <div class="col-auto">
+                <label for="txtEmail" class="col-form-label">Email</label>
+                </div>
+                <div class="col-auto">
+                <input type="text" id="txtEmail" formControlName="txtEmail"  class="form-control">
+                </div>
+                <div class="col-auto">
+                <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                (formulario.controls['txtEmail'].errors?.['email'] && formulario.controls['txtEmail'].touched)">
+                    Email invalido.
+                </span>
+                </div>
+            </div>
+            <div class="mx-2 colum g-3 align-items-center">
+                <div class="col-auto">
+                <label for="txtPassword" class="col-form-label">Contraseña</label>
+                </div>
+                <div class="col-auto">
+                <input type="password" id="txtPassword" formControlName="txtPassword"  class="form-control">
+                </div>
+                <div class="col-auto">
+                <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                (formulario.controls['txtPassword'].errors?.['pattern'] && formulario.controls['txtPassword'].touched)||
+                (formulario.controls['txtPassword'].errors?.['minlength'] && formulario.controls['txtPassword'].touched)">
+                    Contrseña invalida.
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foto deshabilitar">
+        <img class="perfil" src="../../../../assets/perfil-usuario-default.webp" alt="foto del usuario">
+        <div class="mb-3">
+            <input [disabled]="deshabilitarFotoPerfil" id="flImagen" class="input-file form-control" type="file" (change)="onFileSelected($event)" multiple>
+        </div>
+        <div class="tooltip-text" *ngIf="!perfil">Primero Selecciona un Pefil</div>
+    </div>
+</form>

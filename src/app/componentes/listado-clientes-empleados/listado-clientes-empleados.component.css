@@ -1,0 +1,97 @@
+.listado-turnos
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.listado-turnos .lista
+{
+    width: 80%;
+
+}
+
+.lista .item 
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+/*.lista .item:hover
+{
+    background-color: #dc3545;
+}*/
+
+.opciones .boton
+{
+    margin: 0 2px;
+}
+
+.informacion
+{
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.informacion .estado
+{
+
+    border-radius: 50px;
+    padding: 10px;
+
+    background-color: #ffca2c;
+}
+
+.informacion .estado.aceptado
+{
+    color: #fff;
+    background-color: #198754;
+}
+
+.informacion .estado.rechazado
+{
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.informacion .estado.realizado
+{
+    color: #fff;
+    background-color: #6c757d;
+}
+
+.informacion .estado.cancelado
+{
+    color: #fff;
+    background-color: #dc3545;
+}
+
+
+
+
+.listado-turnos .comentario 
+{
+
+    text-align: center;
+    margin: 50px;
+}
+
+.comentario .ip-comentario 
+{
+    width: 400px;
+    height: 100px;
+    max-height: 300px;
+    direction:ltr;
+}
+
+.reseña 
+{
+    margin: 30px;
+    border: 1px solid #ddd;
+    padding: 20px;
+
+    text-align: center;
+}

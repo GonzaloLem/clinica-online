@@ -1,0 +1,10 @@
+.main.bienvenido
+{
+
+    display: flex;
+    justify-content: center;
+    background-image: url("../../../assets/preview-page0.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}

@@ -1,0 +1,19 @@
+<!-- lo toma todo bien -->
+<form [formGroup]="formulario" class="formulario">
+    <div class="mx-2 colum g-3 align-items-center">
+        <div class="col-auto">
+        <label for="txtObraSocial" class="col-form-label">Obra Social</label>
+        </div>
+        <div class="col-auto">
+        <input type="text" id="txtObraSocial" formControlName="txtObraSocial"  class="form-control">
+        </div>
+        <div class="col-auto">
+            <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+            (formulario.controls['txtObraSocial'].errors?.['pattern'] && formulario.controls['txtObraSocial'].touched)||
+            (formulario.controls['txtObraSocial'].errors?.['minlength'] && formulario.controls['txtObraSocial'].touched)">
+                Obra Social Invalida.
+            </span>
+        </div>
+    </div>
+</form>
+

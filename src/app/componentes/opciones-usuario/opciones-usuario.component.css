@@ -1,0 +1,30 @@
+.opciones
+{
+    margin: 20px 0;
+    padding: 10px;
+
+    background-color: rgb(203, 25, 25);
+    border-radius: 10px;
+    user-select: none;
+}
+
+.opciones .lista
+{
+
+    display: flex;
+    gap: 10px;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lista .item
+{
+
+    padding: 5px 10px;
+    background-color: rgb(255, 0, 153);
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}

@@ -1,0 +1,54 @@
+.formulario
+{
+    box-sizing: border-box;
+    width: 1000px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 20px 0;
+    padding: 40px;
+    
+    border-radius: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.formulario .especialidades
+{
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 50px 0;
+
+    gap: 5px;
+}
+
+.formulario .especialidad
+{
+    margin-bottom: 50px;
+}
+
+
+.formulario .boton
+{
+
+    margin: 5px 10px;
+
+    width: 40%;
+    height: 60px;
+}
+
+.boton:focus
+{
+    box-shadow: none;
+}
+
+.btn:focus
+{
+    box-shadow: none;
+    background-color: rgb(1, 104, 1);
+    border-color: rgb(1, 104, 1);
+}

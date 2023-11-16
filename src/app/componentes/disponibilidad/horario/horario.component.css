@@ -1,0 +1,34 @@
+.horarios
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.horarios .hora
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding: 10px;
+    border-radius: 10px;
+
+    background-color: #333;
+    color: #fff;
+}
+
+.hora .titulo
+{
+    font-size: 1.2rem;
+
+}
+
+.horarios .numerico
+{
+    width: 70px;
+    height: 25px;
+}

@@ -1,0 +1,5 @@
+<div class="especialidades">
+    <ul class="lista">
+        <li class="item" [ngClass]="especialidadd === especialidad?'marcado':''" *ngFor="let especialidad of especialidades" (click)="obtenerEspecialidad(especialidad)">{{especialidad}}</li>
+    </ul>
+</div>

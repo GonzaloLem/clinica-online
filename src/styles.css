@@ -1,0 +1,29 @@
+.main
+{
+    height: calc(100vh - 96px);
+}
+
+.deshabilitar
+{
+    user-select: none;
+    opacity: 0.6;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    bottom: 100%; /* Coloca el tooltip encima del elemento padre */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: visibility 0.3s;
+    z-index: 5;
+}
+
+.deshabilitar:hover .tooltip-text {
+    visibility: visible;
+}
+

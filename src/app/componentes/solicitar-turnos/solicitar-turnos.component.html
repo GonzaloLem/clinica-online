@@ -1,0 +1,4 @@
+<app-header></app-header>
+<app-listado-especialidades (outPutEspecialidad)="obtenerEspecialidad($event)"></app-listado-especialidades>
+<app-listado-especialistas (outPutEspecialista)="obtenerEspecialista($event)" *ngIf="especialidad" [filtro]="especialidad" ></app-listado-especialistas>
+<app-horarios-disponibles [especialista]="especialista" [especialidad]="especialidad" *ngIf="especialista"></app-horarios-disponibles>

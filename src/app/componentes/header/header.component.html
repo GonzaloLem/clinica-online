@@ -1,0 +1,19 @@
+<header class="header">
+    <section class="contenedor">
+        <div class="icono">
+            <img class="logo" src="../../../assets/iconos/favicon-32x32.png" alt="logo de la clinica" routerLink="/bienvenido">
+        </div>
+        <div class="encabezado">
+            <h1 class="titulo">Clinica Online</h1>
+        </div>
+        <div class="opciones-usuario">
+            <div class="login">
+                <button *ngIf="administrador" type="button" class="boton btn btn-primary btn-lg" routerLink="/usuarios">Usuarios</button>
+                <button *ngIf="!logueado" type="button" class="boton btn btn-primary btn-lg" routerLink="/login">Login</button>
+                <button *ngIf="logueado" type="button" class="boton btn btn-primary btn-lg" (click)="desLogin()">DesLogin</button>
+                <button type="button" class="boton btn btn-primary btn-lg" routerLink="/register">Register</button>
+            </div>
+        </div>
+    </section>
+</header>
+

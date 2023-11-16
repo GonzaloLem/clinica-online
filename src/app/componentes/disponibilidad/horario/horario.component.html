@@ -1,0 +1,9 @@
+<section class="horarios">
+    <div class="hora">
+        <span class="titulo">Horarios del día {{dia}}</span>
+        <label for="">Horario de entrada</label>
+        <input type="text" [ngModel]="entrada" (ngModelChange)="formatoEntrada($event)" id="txtHoraEntrada" class="numerico">
+        <label for="">Horario de salida</label>
+        <input type="text" [ngModel]="salida" (ngModelChange)="formatoSalida($event)" id="txtHoraSalida" class="numerico">
+    </div>
+</section>

@@ -1,0 +1,14 @@
+<section class="horarios">
+    <app-especialidades (outPutEspecialidad)="obtenerEspecialidad($event)"></app-especialidades>
+    <app-dias (outPutDia)="mostrarHorarioDia($event)" [marcado]="diasEspecialista"></app-dias>
+    <div class="lista-horarios">
+        <app-horario [dia]="'Lunes'" *ngIf="this.diasEspecialista.indexOf('Lunes') !== -1" (outPutHorario)="obtenerHorario($event)" [emitir]="this.diasEspecialista.indexOf('Lunes') !== -1 && guardar"></app-horario>
+        <app-horario [dia]="'Martes'" *ngIf="this.diasEspecialista.indexOf('Martes') !== -1" (outPutHorario)="obtenerHorario($event)" [emitir]="this.diasEspecialista.indexOf('Martes') !== -1 && guardar"></app-horario>
+        <app-horario [dia]="'Miercoles'" *ngIf="this.diasEspecialista.indexOf('Miercoles') !== -1" (outPutHorario)="obtenerHorario($event)" [emitir]="this.diasEspecialista.indexOf('Miercoles') !== -1 && guardar"></app-horario>
+        <app-horario [dia]="'Jueves'" *ngIf="this.diasEspecialista.indexOf('Jueves') !== -1" (outPutHorario)="obtenerHorario($event)" [emitir]="this.diasEspecialista.indexOf('Jueves') !== -1 && guardar"></app-horario>
+        <app-horario [dia]="'Viernes'" *ngIf="this.diasEspecialista.indexOf('Viernes') !== -1" (outPutHorario)="obtenerHorario($event)" [emitir]="this.diasEspecialista.indexOf('Viernes') !== -1 && guardar"></app-horario>
+        <app-horario [dia]="'Sabado'" *ngIf="this.diasEspecialista.indexOf('Sabado') !== -1" (outPutHorario)="obtenerHorario($event)" [emitir]="this.diasEspecialista.indexOf('Sabado') !== -1 && guardar"></app-horario>
+        <app-horario [dia]="'Domingo'" *ngIf="this.diasEspecialista.indexOf('Domingo') !== -1" (outPutHorario)="obtenerHorario($event)" [emitir]="this.diasEspecialista.indexOf('Domingo') !== -1 && guardar"></app-horario>
+    </div>
+    <button *ngIf="this.diasEspecialista.length > 0" type="button" class="btn btn-primary btn-lg" (click)="guardarDisponibilidad()">Guardar Horarios</button>
+</section>

@@ -1,0 +1,1 @@
+.main{height:calc(100vh - 96px)}.deshabilitar{-webkit-user-select:none;user-select:none;opacity:.6}.tooltip-text{visibility:hidden;position:absolute;background-color:#333;color:#fff;padding:5px;border-radius:5px;bottom:100%;left:50%;transform:translate(-50%);transition:visibility .3s;z-index:5}.deshabilitar:hover .tooltip-text{visibility:visible}

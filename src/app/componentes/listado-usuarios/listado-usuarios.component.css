@@ -1,0 +1,32 @@
+.lista
+{
+    display: flex;
+    list-style: none;
+}
+
+.item
+{
+    cursor: pointer;
+}
+
+.item:hover
+{
+    background-color: #dc3545;
+}
+
+.separacion
+{
+    width: 250px;
+    margin-right: 11%;
+}
+
+.separacion:last-child
+{
+    margin: 0;
+}
+
+.separacion-boton
+{
+    width: 300px;
+    margin: 0;
+}

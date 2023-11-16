@@ -1,0 +1,58 @@
+.formulario
+{
+    position: relative;
+    box-sizing: border-box;
+
+
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+
+    margin: 20px 0;
+ 
+    padding: 40px 0;
+    
+    border-radius: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.formulario .foto
+{
+
+
+    text-align: center;
+}
+
+.foto .input-file
+{
+    width: 120px;
+}
+
+.foto .perfil
+{
+    width: 90px;
+    height: 90px;
+
+    margin: 10px 0;
+    border-radius: 50%;
+}
+
+.formulario .perfil
+{
+    text-align: center;
+}
+
+.perfil .boton
+{
+
+    margin: 5px 10px;
+
+    width: 40%;
+    height: 40px;
+}
+
+.boton:focus
+{
+    box-shadow: none;
+}

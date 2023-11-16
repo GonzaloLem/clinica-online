@@ -1,0 +1,1 @@
+export const PERFILES:string[] = ["Especialista", "Paciente", "Administrador"];

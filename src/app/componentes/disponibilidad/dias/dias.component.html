@@ -1,0 +1,5 @@
+<div class="dias">
+    <ul class="lista">
+        <ul class="item" *ngFor="let dia of dias" [ngClass]="buscarMarcado(dia)?'marcado':''" (click)="obtenerdia(dia)">{{dia}}</ul>
+    </ul>
+</div>

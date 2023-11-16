@@ -1,0 +1,23 @@
+<main class="main">
+    <section class="datos-usuario">
+        <div class="perfiles" *ngIf="!perfil">
+            <div class="card" style="width: 12rem;" (click)="setearPerfil('Paciente')">
+                <img src="../../../../assets/paciente.jpg" class="card-img-top img" alt="paciente">
+            </div>
+            <div class="card" style="width: 12rem;" (click)="setearPerfil('Especialista')">
+                <img src="../../../../assets/especialista.jpg" class="card-img-top img" alt="especialista">
+            </div>
+        </div>
+
+        <app-usuario *ngIf="perfil" [minimoFotos]="minimoFotos" [perfil]="perfil" [deshabilitarFotoPerfil]="false"></app-usuario>
+        <app-especialista *ngIf="usuarioPerfil&&especialista"  (outPutEspecialidad)="obtenerDatosPerfil($event)"></app-especialista>
+        <app-paciente *ngIf="usuarioPerfil&&paciente" (outPutPaciente)="obtenerDatosPerfil($event)"></app-paciente>
+        <div class="opciones" *ngIf="perfil">
+            <button type="button" class="boton c btn btn-primary btn-sm" (click)="registrarUsuario()">Registrar</button>
+            <button type="button" class="boton c btn btn-primary btn-sm" (click)="volver()">Cambiar Perfil</button>
+            <button type="button" class="boton c btn btn-primary btn-sm" routerLink="/bienvenido">Volver</button>
+        </div>
+
+    </section>
+</main>
+

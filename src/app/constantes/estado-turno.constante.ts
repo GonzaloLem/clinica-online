@@ -1,0 +1,1 @@
+export const ESTADO_TURNO:string[] = ["Pendiente", "Aceptado", "Rechazado", "Realizado", "Cancelado"];

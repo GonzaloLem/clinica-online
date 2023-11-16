@@ -1,0 +1,1 @@
+export const DIAS:string[] = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
