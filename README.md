@@ -1,27 +1,37 @@
-# ClinicaOnline
+# ¡Bienvenidos a la Clinica Online!
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.7.
+Al ingresar por primera ves, vas a estar en la pagina principal de la pagina,
+el home. Arriba a la derecha vas a tener las opciones para loguearte o registrarse.
 
-## Development server
+# registro
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Vas a poder registrarte como paciente o especialista, tenes que completar los campos que te piden y verificar tu email, en el caso de un especialista ademas de verificar el email vas a tener que esperar que un administrador te active la cuenta.
 
-## Code scaffolding
+# login 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Cuenta con usuarios ya cargados para poder testear las funciones de las paginas.
 
-## Build
+Al loguarte te va a dar acceso a las siguentes funciones
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Mi Perfil
 
-## Running unit tests
+En la cual vas a poder ver informacion de tu cuenta y en caso de que seas especialista
+vas a tener una opciones en la cual te permita regitrar tu disponibilidad horaria.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Sacar Turno
 
-## Running end-to-end tests
+Esta funcion es solo para pacientes o administradores, en la cual van a poder elegir la especialiad que quieren y el especialista que usted prefiera! en los turnos que tiene disponible.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Mis Turnos
 
-## Further help
+Para los pacientes van a poder ver los turnos que tuvieron o van a tener, si el turno no fue realizado pueden cancelarlo, dejando un comentario de porque lo cancelan.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para los especialistas van a poder ver todos los turnos que sacaron para atenderce con usted y los que ya finalizaron. Vas a tener un menu de opciones con las que vas a poder cancelar, aceptar, finalizar el turno.
+
+Para los administradores van a poder ver el listado de turnos de la clinica y vas a poder cancelar los que aun no fueron finalizados.
+
+Se pueden ver las reseñas de los turnos que las tienen(osea que finalizo cual sea el motivo).
+
+# Usuarios
+
+Ubicado al lado de los botones de login y Register, esta opcion solo va a aparecer si sos un administrador y vas a poder ver el listado de usuarios que hay en la clinica, vas a poder activar las cuentas de especialistas y además vas a poder registrar a un nuevo administador.
