@@ -10,4 +10,5 @@ import { PERFILES } from 'src/app/constantes/perfil.constante';
 export class PerfilComponent 
 {
   especialista:boolean = Usuario.obtenerLocalStorage().perfil === PERFILES[0]?true:false;
+  paciente:boolean = Usuario.obtenerLocalStorage().perfil === PERFILES[1]?true:false;
 }

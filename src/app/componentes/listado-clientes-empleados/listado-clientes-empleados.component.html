@@ -1,11 +1,22 @@
 <section class="listado-turnos">
+   <div class="filtrado">
+      <h4>Filtro</h4>
+      <input type="text" class="filtro" [(ngModel)]="filtro" placeholder="Filtrar por especialidad, especialista o paciente">
+   </div>
+
     <h2 class="m-4">Listado de turnos</h2>
-    <ul class="list-group lista" *ngFor="let turno of turnos">
+    <ul class="list-group lista" *ngFor="let turno of filtrarDatos()">
         <li class="list-group-item item">
            <div class="informacion">
+            <span *ngIf="usuario.perfil !== 'Especialista'">
+               Especialista: {{turno.especialista.apellido}}  
+            </span>
             <span>
               Especialdiad: {{turno.especialidad}}  
            </span>
+           <span *ngIf="usuario.perfil !== 'Paciente'">
+            Paciente: {{turno.paciente.apellido}}  
+         </span>
            <span>
               Fecha: {{turno.fecha}}/{{turno.mes}}
            </span>
@@ -17,11 +28,12 @@
            </span>
           </div> 
            <div class="opciones">
-                <button type="button" class="btn btn-success boton" *ngIf="comprobarAccion(turno.estado, 'Aceptado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Aceptado')">Aceptar</button>
-                <button type="button" class="btn btn-danger boton" *ngIf="comprobarAccion(turno.estado, 'Rechazado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Rechazado')">Rechazar</button>
-                <button type="button" class="btn btn-warning boton" *ngIf="comprobarAccion(turno.estado, 'Cancelado')" (click)="cambiarEstadoTurno(turno, 'Cancelado')">Cancelar</button>
-                <button type="button" class="btn btn-secondary boton" *ngIf="comprobarAccion(turno.estado, 'Realizado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Realizado')">Finalizar</button>
-                <button type="button" class="btn btn-info boton" *ngIf="turno['comentario']" (click)="verComentario(turno['comentario'])">Ver Reseña</button>
+               <button type="button" class="btn btn-success boton" *ngIf="comprobarAccion(turno.estado, 'Aceptado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Aceptado')">Aceptar</button>
+               <button type="button" class="btn btn-danger boton" *ngIf="comprobarAccion(turno.estado, 'Rechazado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Rechazado')">Rechazar</button>
+               <button type="button" class="btn btn-warning boton" *ngIf="comprobarAccion(turno.estado, 'Cancelado')" (click)="cambiarEstadoTurno(turno, 'Cancelado')">Cancelar</button>
+               <button type="button" class="btn btn-secondary boton" *ngIf="comprobarAccion(turno.estado, 'Realizado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Realizado')">Finalizar</button>
+               <button type="button" class="btn btn-info boton" *ngIf="turno.estado === 'Realizado'" (click)="verHistorialClinico(turno)">Historial Clinico</button>
+            <button type="button" class="btn btn-info boton" *ngIf="comprobarAccion(turno.estado, '') && turno['comentario']" (click)="verComentario(turno)">Ver Reseña</button>
            </div>
         </li>
       </ul>
@@ -39,5 +51,7 @@
         <p>{{ comentario }}</p>
         <button type="button" class="btn btn-primary btn-lg m-4" (click)="cerrarResenia()" >Cerrar</button>
       </div>
+      <app-formulario-turno *ngIf="mostrarFormularioTurno" (outPutFormulario)="obtenerDatosPaciente($event)"></app-formulario-turno>
+      <app-historial-clinico *ngIf="mostrarHistorialClinico" (outPutCerrar)="cerrarHistorial($event)" [historialClinico]="historial"></app-historial-clinico>
 </section>
 

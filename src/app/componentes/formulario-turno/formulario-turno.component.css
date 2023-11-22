@@ -1,0 +1,47 @@
+.formulario 
+{
+    position: relative;
+    top: 40%;
+    left: 50%;
+
+    width: 30%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+
+.fg
+{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas: 
+    "titulo1 titulo2";
+
+    gap: 5px;
+}
+
+.ip-comentario 
+{
+    height: 50px;
+    max-height: 150px;
+    direction:ltr;
+}
+
+.agregar
+{
+
+    align-self: flex-start;
+    cursor: pointer;
+    color: #0059ff;
+    user-select: none;
+}

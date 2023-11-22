@@ -71,7 +71,7 @@ export class HorariosService {
 
       for (let turno of turnos) 
       {
-        if (turno.fecha === fecha && turno.horario === horario && turno.estado === ESTADO_TURNO[0]) 
+        if (turno.fecha === fecha && turno.horario === horario && turno.estado !== ESTADO_TURNO[3]) 
         {
           retorno = true;
         }

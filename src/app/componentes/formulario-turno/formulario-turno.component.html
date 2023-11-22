@@ -1,0 +1,38 @@
+<section class="modal">
+    <form  [formGroup]="formulario" class="formulario">
+        <div class="input-group mb-3 fg">
+            <span [style.grid-area]="'titulo1'">Peso</span>
+            <input type="text" class="form-control mr-2" [style.width]="'100%'" formControlName="txtPeso">
+            <span [style.grid-area]="'titulo2'">Altura</span>
+            <input type="text" class="form-control" [style.width]="'100%'" formControlName="txtAltura">
+        </div>
+        <div class="input-group mb-3 fg">
+            <span [style.grid-area]="'titulo1'">Temperatura</span>
+            <input type="text" class="form-control mr-2" [style.width]="'100%'" formControlName="txtTemperatura">
+            <span [style.grid-area]="'titulo2'">Presión</span>
+            <input type="text" class="form-control" [style.width]="'100%'" formControlName="txtPresion">
+        </div>
+        <div class="input-group">
+            <span class="input-group-text"></span>
+            <textarea class="form-control ip-comentario" id="txtComentario" formControlName="txtComentario"></textarea>
+        </div>
+        <span class="agregar" (click)="aumentarIndiceDinamico()">+ Agregar dato</span>
+        <form *ngIf="formularioDinamico" [formGroup]="formularioDinamico!" class="formulario-dinamico">
+            <div class="input-group mb-3" *ngFor="let formulario of datosDinamico; let i = index">
+                <input class="input-group-text" [style.width]="'130px'" placeholder="Ingrese Clave" [formControlName]="'clave'+i">
+                <input type="text" class="form-control" [id]="i" placeholder="Dato" [formControlName]="'dato'+i">
+                <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                (formularioDinamico.controls['dato'+i].errors?.['pattern'] && formularioDinamico.controls['dato'+i].touched)">
+                    Dato invalida.
+                </span>
+                <span class="form-text" style="color: rgb(255, 0, 0);" *ngIf="
+                (formularioDinamico.controls['clave'+i].errors?.['pattern'] && formularioDinamico.controls['clave'+i].touched)">
+                    Clave invalido.
+                </span>
+            </div>
+        </form>
+        <button type="button" class="btn btn-primary" [style.width]="'50%'" (click)="finalizar()">Finalizar</button>
+    </form>
+
+</section>
+

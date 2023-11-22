@@ -18,7 +18,7 @@ import { CaptchaService } from 'src/app/servicios/captcha/captcha.service';
 
 
 
-export class HorariosDisponiblesComponent implements OnInit, OnChanges
+export class HorariosDisponiblesComponent implements OnChanges
 {
   @Input() especialidad:any;
   @Input() especialista:any;
@@ -43,25 +43,20 @@ export class HorariosDisponiblesComponent implements OnInit, OnChanges
     });
   }
 
-  
-  ngOnInit(): void 
-  {
-    
-  }
+
 
   async ngOnChanges(changes: SimpleChanges): Promise<void> 
   {
     if(changes["especialista"])
     {
-
       (await this.servicioDisponibilidad.obtenerDisponibilidad(this.especialista.id)).subscribe( async (disponibilidad:any)=>{
 
-        (await this.servicioTurno.obtenerTurno({id:this.especialista.id, perfil:PERFILES[0]})).subscribe( async (turnos:any)=>{
-          console.log(turnos);
+        (this.servicioTurno.obtenerTurno({id:this.especialista.id, perfil:PERFILES[0]})).subscribe( async (turnos:any)=>{
           this.horariosServicio.armarHorarios(disponibilidad[0][this.especialidad.toLowerCase()],  turnos)
         
             this.disponibilidad = this.horariosServicio.Disponibilidad;
             this.dias = this.cantidadDias(this.disponibilidad);
+            console.log(this.disponibilidad);
 
         });
 
@@ -86,20 +81,29 @@ export class HorariosDisponiblesComponent implements OnInit, OnChanges
       this.casillaMarcada.i = -1;
       this.casillaMarcada.j = -1;
     }
-    console.log(this.turnoSeleccionado);
   }
 
   sacarTurno()
   {
-
     this.servicioTurno.insertar
     (
+
       {
-        idEspecialista:this.especialista.id,
+        especialista:
+          {
+            id:this.especialista.id,
+            nombre:this.especialista.datos.nombre,
+            apellido:this.especialista.datos.apellido
+          },
         fecha:this.disponibilidad![this.casillaMarcada.i][this.casillaMarcada.j].fecha,
         horario:parseInt(this.disponibilidad![this.casillaMarcada.i][this.casillaMarcada.j].horario),
         mes:this.disponibilidad![this.casillaMarcada.i][this.casillaMarcada.j].mes,
-        idPaciente:Usuario.obtenerLocalStorage().id,
+        paciente:
+          {
+            id:Usuario.obtenerLocalStorage().id,
+            nombre:Usuario.obtenerLocalStorage().datos.nombre,
+            apellido:Usuario.obtenerLocalStorage().datos.apellido
+          },
         especialidad:this.especialidad,
         estado:ESTADO_TURNO[0]
       }

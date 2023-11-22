@@ -16,11 +16,11 @@ export class TurnosService {
 
     console.log(turno);
     const observable = await addDoc(coleccion, {
-      especialista:turno.idEspecialista,
+      especialista:turno.especialista,
       fecha:turno.fecha,
       horario:turno.horario,
       mes:turno.mes,
-      paciente:turno.idPaciente,
+      paciente:turno.paciente,
       especialidad:turno.especialidad,
       estado:turno.estado
     });
@@ -31,7 +31,6 @@ export class TurnosService {
 
   async modificarTurno(turno:any)
   {
-    console.log("HOLA");
     const documentoRef = doc(this.firestore, 'turnos', turno.id);
     await setDoc(documentoRef, turno, { merge: true });
   }
@@ -41,12 +40,12 @@ export class TurnosService {
     const coleccion = collection(this.firestore, 'turnos');
       if( usuario && (usuario.perfil === PERFILES[0]))
       {
-        const queryTurno = query(coleccion, where('especialista', '==', usuario.id));
+        const queryTurno = query(coleccion, where('especialista.id', '==', usuario.id));
         return collectionData(queryTurno, { idField: 'id' }) as Observable<any>;
       }
       else if( usuario && (usuario.perfil === PERFILES[1]))
       {
-        const queryTurno = query(coleccion, where('paciente', '==', usuario.id));
+        const queryTurno = query(coleccion, where('paciente.id', '==', usuario.id));
         return collectionData(queryTurno, { idField: 'id' }) as Observable<any>;
       }
     return collectionData(coleccion, { idField: 'id'}) as Observable<any>;

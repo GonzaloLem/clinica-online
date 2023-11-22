@@ -1,0 +1,27 @@
+<section class="modal">
+    <div class="datos">
+        <ul class="lista">
+            <li class="item">
+                <span>Altura: {{historialClinico.datos.altura}}</span>
+            </li>
+            <li class="item">
+                <span>Peso: {{historialClinico.datos.peso}}</span>
+            </li>
+            <li class="item">
+                <span>Temperatura: {{historialClinico.datos.temperatura}}</span>
+            </li>
+            <li class="item">
+                <span>Presión: {{historialClinico.datos.presion}}</span>
+            </li>
+            <li *ngFor="let dato of historialClinico.datosDinamicos">
+                <span>{{dato.clave}}: {{dato.dato}}</span>
+            </li>
+        </ul>
+        <h6>Comentario</h6>
+        <p>
+            {{historialClinico.datos.comentario}}
+        </p>
+        <button type="button" class="btn btn-primary"  (click)="descargar()">Descargar</button>
+        <button type="button" class="btn btn-primary"  (click)="cerrar()">Cerrar</button>
+    </div>
+</section>

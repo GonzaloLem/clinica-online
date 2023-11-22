@@ -1,0 +1,30 @@
+<section>
+    <h2 class="m-4">Listado de turnos</h2>
+    <ul class="list-group lista" *ngFor="let historial of listadoHistorialClinico">
+        <li class="list-group-item item">
+           <div class="informacion">
+            <span *ngIf="usuario.perfil !== 'Especialista'">
+               Especialista: {{historial.especialista.apellido}}  
+            </span>
+           <span *ngIf="usuario.perfil !== 'Paciente'">
+            Paciente: {{historial.paciente.apellido}}  
+         </span>
+        <span>
+            Altura: {{historial.datos.altura}} 
+        </span>
+        <span>
+            Peso: {{historial.datos.peso}} 
+        </span>
+        <span>
+            Presion: {{historial.datos.presion}} 
+        </span>
+        <span>
+            Temperatura: {{historial.datos.temperatura}} 
+        </span>
+          </div> 
+        <div class="opciones">
+            <button type="button" class="btn btn-info boton" (click)="descargar(historial)">Descarga PDF</button>
+        </div>
+        </li>
+      </ul>
+</section>

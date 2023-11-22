@@ -33,6 +33,11 @@ import { ListadoClientesEmpleadosComponent } from './componentes/listado-cliente
 import { AdministrarTurnosComponent } from './componentes/administrar-turnos/administrar-turnos.component';
 import { MostrarPipe } from './pipe/formatos/horarios/mostrar.pipe';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { FormularioTurnoDirective } from './directivas/turnos/formularioTurno/formulario-turno.directive';
+import { FormularioTurnoComponent } from './componentes/formulario-turno/formulario-turno.component';
+import { HistorialClinicoComponent } from './componentes/historial-clinico/historial-clinico.component';
+import { ListadoHistorialClinicoComponent } from './componentes/listado-historial-clinico/listado-historial-clinico.component';
+import { AdministrarHistorialComponent } from './componentes/administrar-historial/administrar-historial.component';
 
 /**
  * {"projectId":"clinica-online-97f5a","appId":"1:579207740396:web:b409d01b419ab664c61ec9","storageBucket":"clinica-online-97f5a.appspot.com","locationId":"us-central","apiKey":"AIzaSyCaen2_ua9QOdA-SX418-B2Y76C4gJ0B58","authDomain":"clinica-online-97f5a.firebaseapp.com","messagingSenderId":"579207740396","measurementId":"G-P53GBWZFB9"}
@@ -61,7 +66,12 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     HorariosDisponiblesComponent,
     ListadoClientesEmpleadosComponent,
     AdministrarTurnosComponent,
-    MostrarPipe
+    MostrarPipe,
+    FormularioTurnoDirective,
+    FormularioTurnoComponent,
+    HistorialClinicoComponent,
+    ListadoHistorialClinicoComponent,
+    AdministrarHistorialComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+.datos
+{
+    position: relative;
+    top: 40%;
+    left: 50%;
+
+    width: 15%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.datos .lista
+{
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
