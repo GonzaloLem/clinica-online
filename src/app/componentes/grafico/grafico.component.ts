@@ -8,6 +8,15 @@ import { LogsService } from 'src/app/servicios/usuarios/logs/logs.service';
 import { UsuariosService } from 'src/app/servicios/usuarios/usuarios.service';
 import { take } from 'rxjs';
 
+import * as domToImage from 'dom-to-image';
+
+import * as fs from 'file-saver';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs
+
+
 @Component({
   selector: 'app-grafico',
   templateUrl: './grafico.component.html',
@@ -37,6 +46,76 @@ export class GraficoComponent implements OnInit
   };
 
   constructor(private servicioGraficoLogs:GraficoLogsService, private servicioLogs:LogsService, private servicioUsuarios:UsuariosService){}
+
+  saveChartAsImage(): void {
+    const chartElement = document.querySelector('.chart'); // Asegúrate de que esta clase corresponde al gráfico
+    
+    if (chartElement) {
+      domToImage.toPng(chartElement)
+        .then((dataUrl) => {
+          const link = document.createElement('a');
+          link.href = dataUrl;
+          link.download = 'chart.png';
+          link.click();
+        })
+        .catch((error) => {
+          console.error('Error al guardar el gráfico como imagen:', error);
+        });
+    }
+  }
+
+  exportToPDF(): void {
+    const pdfDefinition:any = {
+      content: [
+        { text: 'Logs de Ingresos al Sistema', style: 'header' },
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 590, y2: 10, lineWidth: 1 }] },
+        // Agrega el gráfico como imagen al PDF
+        {
+          image: this.chartToDataURL(),
+          fit: [500, 300],
+        },
+        // Agrega los datos del gráfico como tabla al PDF
+        {
+          table: {
+            headerRows: 1,
+            body: this.getPDFTableData(),
+          },
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10],
+        },
+      },
+    };
+
+    // Genera el PDF
+    const pdfDocGenerator = pdfMake.createPdf(pdfDefinition);
+    pdfDocGenerator.getBlob((blob) => {
+      fs.saveAs(blob, 'logs.pdf');
+    });
+  }
+
+  private chartToDataURL(): string {
+    const chartElement:any = document.querySelector('.chart');
+    return chartElement ? chartElement.toDataURL('image/png') : '';
+  }
+
+  private getPDFTableData(): any[] {
+    const tableData = [['Día', ...this.barChartData.datasets.map((dataset) => dataset.label)]];
+
+    this.barChartData.labels.forEach((day, index) => {
+      const rowData:any[] = [day];
+      this.barChartData.datasets.forEach((dataset) => {
+        rowData.push(dataset.data[index]);
+      });
+      tableData.push(rowData);
+    });
+
+    return tableData;
+  }
 
 
   ngOnInit(): void {

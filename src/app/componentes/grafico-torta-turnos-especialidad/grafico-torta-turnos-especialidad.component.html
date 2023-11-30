@@ -2,11 +2,12 @@
   <h2>Turnos por especialidad</h2>
   <canvas
   baseChart
-  class="chart"
+  class="chartt"
   [data]="pieChartData"
   [type]="pieChartType"
   [options]="pieChartOptions"
   [plugins]="pieChartPlugins">
 </canvas>
+<button type="button" class="btn btn-primary" (click)="exportToPDF()">Guardar Gráfico</button>
 <!--<mat-divider style="margin: 1em 0"></mat-divider>-->
 </section>

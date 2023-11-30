@@ -7,6 +7,13 @@ import { TurnosService } from 'src/app/servicios/horarios/turnos.service';
 import { take } from 'rxjs';
 ;
 
+
+import * as fs from 'file-saver';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs
+
 @Component({
   selector: 'app-grafico-torta-turnos-especialidad',
   templateUrl: './grafico-torta-turnos-especialidad.component.html',
@@ -59,6 +66,57 @@ export class GraficoTortaTurnosEspecialidadComponent implements OnInit
   };
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [DataLabelsPlugin];
+
+  exportToPDF(): void {
+    const pdfDefinition:any = {
+      content: [
+        { text: 'Turnos por Especialidad', style: 'header' },
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 590, y2: 10, lineWidth: 1 }] },
+        // Agrega el gráfico de torta como imagen al PDF
+        {
+          image: this.chartToDataURL(),
+          fit: [500, 300],
+        },
+        // Agrega los datos del gráfico de torta como tabla al PDF
+        {
+          table: {
+            headerRows: 1,
+            body: this.getPDFTableData(),
+          },
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10],
+        },
+      },
+    };
+
+    // Genera el PDF
+    const pdfDocGenerator = pdfMake.createPdf(pdfDefinition);
+    pdfDocGenerator.getBlob((blob) => {
+      fs.saveAs(blob, 'turnos_por_especialidad.pdf');
+    });
+  }
+
+  private chartToDataURL(): string {
+    const chartElement:any = document.querySelector('.chartt');
+    return chartElement ? chartElement.toDataURL('image/png') : '';
+  }
+
+  private getPDFTableData(): any[] {
+    const tableData = [['Especialidad', 'Cantidad de Turnos']];
+
+    this.pieChartData.labels.forEach((label, index) => {
+      const rowData:any[] = [label, this.pieChartData.datasets[0].data[index]];
+      tableData.push(rowData);
+    });
+
+    return tableData;
+  }
+  
 
   ngOnInit(): void 
   {

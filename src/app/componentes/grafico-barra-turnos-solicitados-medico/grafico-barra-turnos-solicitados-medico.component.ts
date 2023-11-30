@@ -10,6 +10,12 @@ import { take } from 'rxjs';
 import { TurnosService } from 'src/app/servicios/horarios/turnos.service';
 import { PERFILES } from 'src/app/constantes/perfil.constante';
 
+import * as fs from 'file-saver';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs
+
 @Component({
   selector: 'app-grafico-barra-turnos-solicitados-medico',
   templateUrl: './grafico-barra-turnos-solicitados-medico.component.html',
@@ -39,6 +45,58 @@ export class GraficoBarraTurnosSolicitadosMedicoComponent {
 
   constructor(private servicioTurnos:TurnosService, private servicioGraficoLogs:GraficoLogsService, private servicioUsuarios:UsuariosService){}
 
+  exportToPDF(): void {
+    const pdfDefinition:any = {
+      content: [
+        { text: 'Turnos solicitados por medico', style: 'header' },
+        { canvas: [{ type: 'line', x1: 0, y1: 10, x2: 590, y2: 10, lineWidth: 1 }] },
+        // Agrega el gráfico como imagen al PDF
+        {
+          image: this.chartToDataURL(),
+          fit: [500, 300],
+        },
+        // Agrega los datos del gráfico como tabla al PDF
+        {
+          table: {
+            headerRows: 1,
+            body: this.getPDFTableData(),
+          },
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10],
+        },
+      },
+    };
+
+    // Genera el PDF
+    const pdfDocGenerator = pdfMake.createPdf(pdfDefinition);
+    pdfDocGenerator.getBlob((blob) => {
+      fs.saveAs(blob, 'turnosSolicitados.pdf');
+    });
+  }
+
+  private chartToDataURL(): string {
+    const chartElement:any = document.querySelector('.chart-dia');
+    return chartElement ? chartElement.toDataURL('image/png') : '';
+  }
+
+  private getPDFTableData(): any[] {
+    const tableData = [['Día', ...this.barChartData.datasets.map((dataset) => dataset.label)]];
+
+    this.barChartData.labels.forEach((day, index) => {
+      const rowData:any[] = [day];
+      this.barChartData.datasets.forEach((dataset) => {
+        rowData.push(dataset.data[index]);
+      });
+      tableData.push(rowData);
+    });
+
+    return tableData;
+  }
 
   ngOnInit(): void {
     let dias = this.servicioGraficoLogs.calcularDias(new Date().getMonth());

@@ -2,7 +2,7 @@
   <h2>Turnos finalizados por medicos</h2>
     <canvas
     baseChart
-    class="chart"
+    class="chart-finalizado"
     [data]="barChartData"
     [options]="barChartOptions"
     [plugins]="barChartPlugins"
@@ -10,6 +10,7 @@
     (chartHover)="chartHovered($event)"
     (chartClick)="chartClicked($event)">
   </canvas>
+  <button type="button" class="btn btn-primary" (click)="exportToPDF()">Guardar Gráfico</button>
   </section>
   
 
