@@ -23,9 +23,9 @@
            <span>
               Horario: {{turno.horario | mostrar}} 
            </span>
-           <span class="estado" [class]="turno.estado === 'Aceptado'?'aceptado':turno.estado === 'Rechazado'?'rechazado':turno.estado === 'Cancelado'?'cancelado':turno.estado === 'Realizado'?'realizado':''">
-              {{turno.estado}}
-           </span>
+           <!--[class]="turno.estado === 'Aceptado'?'aceptado':turno.estado === 'Rechazado'?'rechazado':turno.estado === 'Cancelado'?'cancelado':turno.estado === 'Realizado'?'realizado':''"-->
+           <span class="estado" appCambiarColorEstado [appEstadoTurno]="turno.estado">
+           {{turno.estado}}</span>
           </div> 
            <div class="opciones">
                <button type="button" class="btn btn-success boton" *ngIf="comprobarAccion(turno.estado, 'Aceptado') && usuario.perfil === 'Especialista'" (click)="cambiarEstadoTurno(turno, 'Aceptado')">Aceptar</button>

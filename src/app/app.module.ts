@@ -49,6 +49,9 @@ import { GraficoBarraTurnosFinalizadosMedicoComponent } from './componentes/graf
 import { FormatoDiaPipe } from './pipe/formatos/horarios/formato-dia.pipe';
 import { HoraPMAMPipe } from './pipe/formatos/horarios/hora-pmam.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorDirective } from './directivas/formulario/error.directive';
+import { CambiarColorEstadoDirective } from './directivas/formulario/cambiar-color-estado.directive';
+import { HacerClickDirective } from './directivas/extras/hacer-click.directive';
 
 /**
  * {"projectId":"clinica-online-97f5a","appId":"1:579207740396:web:b409d01b419ab664c61ec9","storageBucket":"clinica-online-97f5a.appspot.com","locationId":"us-central","apiKey":"AIzaSyCaen2_ua9QOdA-SX418-B2Y76C4gJ0B58","authDomain":"clinica-online-97f5a.firebaseapp.com","messagingSenderId":"579207740396","measurementId":"G-P53GBWZFB9"}
@@ -90,7 +93,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GraficoBarraTurnosSolicitadosMedicoComponent,
     GraficoBarraTurnosFinalizadosMedicoComponent,
     FormatoDiaPipe,
-    HoraPMAMPipe
+    HoraPMAMPipe,
+    CambiarColorEstadoDirective,
+    HacerClickDirective
   ],
   imports: [
     BrowserModule,

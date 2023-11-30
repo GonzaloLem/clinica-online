@@ -51,3 +51,16 @@
     opacity: 1;
   }
 
+  .invalid-input {
+    border: 2px solid red;
+  }
+
+  .marcado
+{
+    padding: 5px 10px;
+
+    background-color: rgb(0, 42, 85);
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
