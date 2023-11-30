@@ -12,10 +12,11 @@ export class ListadoEspecialistasComponent implements OnChanges
   @Input() filtro:string|null = null;
   especialistas:any[] = []
   especialista:string|null = null;
+  imagenes;
 
   constructor(private servicioUsuarios:UsuariosService){}
 
-  ngOnChanges(cambios: SimpleChanges)
+  async ngOnChanges(cambios: SimpleChanges)
   {
     if(cambios["filtro"])
     {
@@ -24,6 +25,18 @@ export class ListadoEspecialistasComponent implements OnChanges
         this.servicioUsuarios.obtenerEspecialistas(this.filtro).subscribe( (especialistas:any)=>{
           this.especialistas = especialistas;
         });
+        this.imagenes = await this.servicioUsuarios.obtenerImagenes();
+        for(let i= 0;i<this.especialistas.length;i++)
+        {
+          for(let imagen of this.imagenes)
+          {
+            if(imagen.path.split('/').pop() === this.especialistas[i].datos.mail)
+            {
+              this.especialistas[i].img = imagen.url;
+              break;
+            }
+          }
+        }
       }
       else
       {

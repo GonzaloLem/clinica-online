@@ -1,0 +1,14 @@
+<section class="logs">
+  <h2>Logs de ingresos al sistema</h2>
+  <canvas
+  baseChart
+  class="chart"
+  [data]="barChartData"
+  [options]="barChartOptions"
+  [plugins]="barChartPlugins"
+  [type]="barChartType"
+  (chartHover)="chartHovered($event)"
+  (chartClick)="chartClicked($event)"
+>
+</canvas>
+</section>

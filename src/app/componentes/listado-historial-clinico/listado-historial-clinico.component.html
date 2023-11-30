@@ -1,5 +1,6 @@
 <section>
     <h2 class="m-4">Listado de turnos</h2>
+    <button type="button" class="btn btn-info boton" (click)="descarTodo()">Descarga El Historial</button>
     <ul class="list-group lista" *ngFor="let historial of listadoHistorialClinico">
         <li class="list-group-item item">
            <div class="informacion">

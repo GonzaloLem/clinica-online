@@ -21,19 +21,29 @@
     text-align: center;
     padding: 10px;
 
-    border: 1px solid #000;
-    border-radius: 10px;
+    /*border: 1px solid #000;*/
+    border-radius: 50%;
     cursor: pointer;
-    background-color: #333;
+    /*background-color: #333;*/
     color: #fff;
+}
+
+.img-esp
+{
+    padding: 5px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.titulo
+{
+    z-index: 2;
+    color: #000;
 }
 
 .item .imagen
 {
     
-    width: 100px;
-    height: 220px;
-
-    border-radius: 10px;
+    border-radius: 50%;
     
 }

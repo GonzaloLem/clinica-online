@@ -2,8 +2,10 @@
     <h2>Especialistas</h2>
     <ul class="lista">
         <li *ngFor="let especialista of especialistas" class="item" (click)="obtenerEspecialista(especialista)">
-            <h4>{{especialista.datos.nombre}}</h4>
-            <img class="imagen" src="../../../../assets/download.jpg" alt="especialista">
+            <div class="img-esp">
+                <img class="imagen" [src]="especialista.img" alt="especialista">
+            </div>
+            <h4 class="titulo">{{especialista.datos.nombre}}</h4>
         </li>
     </ul>
 </section>

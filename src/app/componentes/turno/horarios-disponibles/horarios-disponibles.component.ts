@@ -29,7 +29,11 @@ export class HorariosDisponiblesComponent implements OnChanges
 
   disponibilidad:any[][] = [];
 
+  horariosDisponibles;
+
   turnoSeleccionado:any[] = [];
+  casillaI:number = -1;
+  casillaJ:number = -1;
   casillaMarcada:{i:number, j:number} = {i:-1,j:-1};
 
   siteKey:string = "6LcPXg4pAAAAAMpDgbKZlga8rAUTUL-zObx0EuhN";
@@ -43,6 +47,17 @@ export class HorariosDisponiblesComponent implements OnChanges
     });
   }
 
+  mostrarHorariosDisponibles(i:number)
+  {
+    this.horariosDisponibles = this.disponibilidad[i];
+    this.casillaI = i;
+    console.log(this.horariosDisponibles);
+  }
+
+  seleccionarHorario(j:number)
+  {
+    this.casillaJ = j;
+  }
 
 
   async ngOnChanges(changes: SimpleChanges): Promise<void> 
@@ -57,9 +72,7 @@ export class HorariosDisponiblesComponent implements OnChanges
             this.disponibilidad = this.horariosServicio.Disponibilidad;
             this.dias = this.cantidadDias(this.disponibilidad);
             console.log(this.disponibilidad);
-
         });
-
       });
     }    
   }
@@ -85,6 +98,8 @@ export class HorariosDisponiblesComponent implements OnChanges
 
   sacarTurno()
   {
+    this.casillaMarcada.i = this.casillaI;
+    this.casillaMarcada.j = this.casillaJ;
     this.servicioTurno.insertar
     (
 

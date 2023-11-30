@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main class="main perfil">
+<main class="main perfil" [@entradaDesdeAbajo]>
     <app-detalle-usuario></app-detalle-usuario>
     <app-mis-horarios *ngIf="especialista"></app-mis-horarios>
     <app-listado-historial-clinico *ngIf="paciente"></app-listado-historial-clinico>

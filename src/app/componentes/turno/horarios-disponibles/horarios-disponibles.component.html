@@ -1,22 +1,24 @@
 <section class="contenedor-ds">
-    <section class="disponibilidad-horaria" [style.gridTemplateColumns]="'repeat(' + (dias.length+1) + ', 1fr)'">
+
+    <li class="lista">
+        <ul *ngFor="let disponibilidadDia of disponibilidad; let i = index ">
+            <button type="button" class="btn btn-primary" (click)="mostrarHorariosDisponibles(i)">{{disponibilidadDia[i].fecha | formatoDia}}{{'/'}}{{disponibilidadDia[i].mes | formatoDia}}</button>
+        </ul>
+    </li>
+
+    <li class="lista" *ngIf="horariosDisponibles">
+        <ul *ngFor="let disponibilidadHora of horariosDisponibles; let j = index ">
+            <button *ngIf="disponibilidadHora.disponible" type="button" class="btn btn-primary" (click)="seleccionarHorario(j)">{{disponibilidadHora.horario | horaPMAM}}</button>
+        </ul>
+    </li>
+    <button  [disabled]="!(casillaI !== -1 && casillaJ !== -1)" type="button" class="btn btn-primary btn-lg" (click)="sacarTurno()">Sacar Turno Online</button>
+
+    <!--<section class="disponibilidad-horaria" [style.gridTemplateColumns]="'repeat(' + (dias.length+1) + ', 1fr)'">
         <span class="texto">Horarios</span>
-        <!--<ul class="lista ls-dias">
-            <li class="dias" *ngFor="let dia of dias">{{dia}}</li>
-        </ul>-->
         <div class="dias" *ngFor="let dia of dias">{{dia}}</div>
         <ul class="lista ls-horarios">
             <li class="horario" *ngFor="let horario of horarios">{{horario}}</li>
         </ul>
-        <!--<section class="tabla-horarios">
-            <div class="horarios" >
-                <div *ngFor="let disponibilidadDia of disponibilidad" class="item-dia">
-                    <span *ngFor="let hr of disponibilidadDia" class="item-horario">
-                        {{hr?.disponible | booleanos}}    
-                    </span>
-                </div>
-            </div>
-        </section>-->
             <div *ngFor="let disponibilidadDia of disponibilidad; let i = index" class="item-dia">
                 <span *ngFor="let hr of disponibilidadDia; let j = index" class="item-horario">
                     <div [class]="hr.disponible?'casilla-disponible':'casilla-ocupada'" 
@@ -31,7 +33,7 @@
           formControlName="recaptcha">
         </ngx-recaptcha2>
       </form>
-    <button  [disabled]="!(turnoSeleccionado.length !== 0)" type="button" class="btn btn-primary btn-lg" (click)="sacarTurno()">Sacar Turno Online</button>
+    <button  [disabled]="!(turnoSeleccionado.length !== 0)" type="button" class="btn btn-primary btn-lg" (click)="sacarTurno()">Sacar Turno Online</button>-->
 </section>
 
 <!--[style.gridTemplateColumns]="'repeat(' + dias.length + ', 1fr)'"-->

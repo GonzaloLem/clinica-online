@@ -1,4 +1,5 @@
 import { Component, OnInit, NgZone  } from '@angular/core';
+import { trigger, style, animate, transition } from '@angular/animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/clases/usuario/usuario';
 import { ESTADO_TURNO } from 'src/app/constantes/estado-turno.constante';
@@ -9,7 +10,15 @@ import { HistorialClinicoService } from 'src/app/servicios/usuarios/historial-cl
 @Component({
   selector: 'app-listado-clientes-empleados',
   templateUrl: './listado-clientes-empleados.component.html',
-  styleUrls: ['./listado-clientes-empleados.component.css']
+  styleUrls: ['./listado-clientes-empleados.component.css'],
+  animations: [
+    trigger('entradaDesdeAbajo', [
+      transition(':enter', [
+        style({ transform: 'translateY(100%)', opacity: 0 }),
+        animate('1000ms ease-in', style({ transform: 'translateY(0)', opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class ListadoClientesEmpleadosComponent implements OnInit
 {

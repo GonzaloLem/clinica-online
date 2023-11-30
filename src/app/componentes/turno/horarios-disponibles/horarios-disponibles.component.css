@@ -111,3 +111,12 @@
     color:#0040ff;
     background-color: #0040ff;;
 }
+
+
+.lista 
+{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

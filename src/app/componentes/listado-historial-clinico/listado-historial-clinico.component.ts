@@ -25,4 +25,9 @@ export class ListadoHistorialClinicoComponent implements OnInit
   {
     this.servicioArchivos.descargarPdfHistorialClinico(historial);
   }
+
+  descarTodo()
+  {
+    this.servicioArchivos.descargarPdfTodoElHistorialClinico(this.listadoHistorialClinico);
+  }
 }

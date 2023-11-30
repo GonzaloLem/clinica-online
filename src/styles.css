@@ -40,3 +40,14 @@
     visibility: visible;
 }
 
+.entrada-desde-abajo {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 300ms ease-in, opacity 300ms ease-in;
+  }
+  
+  .entrada-desde-abajo.activa {
+    transform: translateY(0);
+    opacity: 1;
+  }
+

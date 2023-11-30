@@ -12,14 +12,31 @@ export class ListadoEspecialidadesComponent implements OnInit
   @Output() outPutEspecialidad = new EventEmitter<string|null>();
   especialidades:any[] = [];
   especialidad:string|null = null;
+  imagenes;
 
   constructor(private servicioUsuarios:UsuariosService) {}
 
-  ngOnInit(): void 
+  async ngOnInit(): Promise<void> 
   {
     (this.servicioUsuarios.obtenerEspecialidades() as Observable<any>).subscribe( (especialidades:any)=>{
       this.especialidades = especialidades;
     });
+    this.imagenes = await this.servicioUsuarios.obtenerImagenesEspecialidades();
+    for(let i= 0;i<this.especialidades.length;i++)
+    {
+      for(let imagen of this.imagenes)
+      {
+        if(imagen.path.split('/').pop().replace(/\.[^/.]+$/, '') === this.especialidades[i].especialidad.toLowerCase())
+        {
+          this.especialidades[i].img = imagen.url;
+          break;
+        }
+        else
+        {
+          this.especialidades[i].img = this.imagenes[this.imagenes.findIndex(item => item.path === 'especialidades/especialidad.jpg')].url;
+        }
+      }
+    }
   }
 
 

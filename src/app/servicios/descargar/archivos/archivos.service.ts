@@ -6,6 +6,7 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +15,84 @@ export class ArchivosService {
   private workbook!: Workbook
 
   constructor() { }
+
+  async descargarPdfTodoElHistorialClinico(historia: any[]) {
+    const tablas = [];
+    for (const hs of historia) {
+      const titulos = ["Altura", "Peso", "Temperatura", "Presión"];
+      const valores = [hs.datos.altura, hs.datos.peso, hs.datos.temperatura, hs.datos.presion];
+  
+      for (const titulo of hs.datosDinamicos) {
+        titulos.push(titulo.clave);
+        valores.push(titulo.dato);
+      }
+
+      titulos.push("Comentario");
+      valores.push(hs.datos.comentario);
+  
+      const tabla = {
+        table: {
+          body: [
+            titulos.map((titulo) => ({ text: titulo, style: 'tableHeader' })),
+            valores.map((valor) => ({ text: valor, style: 'tableContent' })),
+          ],
+        },
+      };
+  
+      tablas.push(tabla);
+    }
+    const pdfDefinicion: any = {
+      content: [
+        { image: await this.obtenerImagenBase64("../../../../assets/iconos/android-chrome-192x192.png"), width: 120 }, 
+        { text: "Clinica Online", style: 'titulo' },
+        { text: "", margin: [0, 10] },
+        { text: "Historial Clinico", style: 'titulo' },
+        { text: "", margin: [0, 10] },
+        ...tablas,  // Utiliza el spread operator para expandir el array de tablas
+        { text: "", margin: [0, 10] },
+        { text: "Fecha de Emisión: " + new Date().toISOString(), style: 'titulo' },
+      ],
+      styles: {
+        titulo: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'center',
+          margin: [0, 0, 0, 10],
+        },
+        tableHeader: {
+          bold: true,
+          alignment: 'center',
+        },
+        tableContent: {
+          alignment: 'center',
+        },
+      },
+    };
+  
+    const pdf = pdfMake.createPdf(pdfDefinicion);
+    pdf.open();
+  }
+
+  private obtenerImagenBase64(rutaImagen: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx?.drawImage(img, 0, 0);
+        resolve(canvas.toDataURL('image/png'));
+      };
+      img.onerror = (error) => {
+        reject(error);
+      };
+      img.src = rutaImagen;
+    });
+  }
+  
+  
+  
 
   descargarPdfHistorialClinico(historia: any) {
     let titulos = ["Altura", "Peso", "Temperatura", "Presión"];

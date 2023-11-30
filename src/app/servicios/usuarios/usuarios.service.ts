@@ -129,4 +129,18 @@ export class UsuariosService {
       }
     return collectionData(coleccion, { idField: 'id' }) as Observable<any>;
   }
+
+  public async obtenerImagenesEspecialidades()
+  {
+    const imagenes:any[] = []
+    const imagesRef = ref(this.storage, "especialidades");
+
+    const lista = await listAll(imagesRef);
+
+      for(const item of lista.items)
+      {
+        imagenes.push({path:item.fullPath, url: await getDownloadURL(item)});
+      }
+    return imagenes;
+  }
 }

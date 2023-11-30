@@ -13,6 +13,7 @@ import { ListadoClientesEmpleadosComponent } from './componentes/listado-cliente
 import { misTurnosGuard } from './guards/misTurnos/mis-turnos.guard';
 import { ListadoHistorialClinicoComponent } from './componentes/listado-historial-clinico/listado-historial-clinico.component';
 import { AdministrarHistorialComponent } from './componentes/administrar-historial/administrar-historial.component';
+import { MostrarGraficosComponent } from './componentes/mostrar-graficos/mostrar-graficos.component';
 
 const routes: Routes = 
 [
@@ -27,7 +28,10 @@ const routes: Routes =
     {path:'turnos', component: ListadoClientesEmpleadosComponent},
     {path:'misturnos', component: ListadoClientesEmpleadosComponent}
   ]/*,canActivate:[misTurnosGuard]*/},
+
   {path:'pacientes', component: AdministrarHistorialComponent},
+  {path:'graficos', component: MostrarGraficosComponent},
+
   { path: 'register', loadChildren: () => import('./modulos/logueo/register/register.module').then(m => m.RegisterModule) },
   { path: 'login', loadChildren: () => import('./modulos/logueo/login/login.module').then(m => m.LoginModule) },
 

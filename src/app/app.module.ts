@@ -38,6 +38,17 @@ import { FormularioTurnoComponent } from './componentes/formulario-turno/formula
 import { HistorialClinicoComponent } from './componentes/historial-clinico/historial-clinico.component';
 import { ListadoHistorialClinicoComponent } from './componentes/listado-historial-clinico/listado-historial-clinico.component';
 import { AdministrarHistorialComponent } from './componentes/administrar-historial/administrar-historial.component';
+import { GraficoComponent } from './componentes/grafico/grafico.component';
+import { MostrarGraficosComponent } from './componentes/mostrar-graficos/mostrar-graficos.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgChartsModule } from 'ng2-charts';
+import { GraficoTortaTurnosEspecialidadComponent } from './componentes/grafico-torta-turnos-especialidad/grafico-torta-turnos-especialidad.component';
+import { GraficoBarraTurnosDiaComponent } from './componentes/grafico-barra-turnos-dia/grafico-barra-turnos-dia.component';
+import { GraficoBarraTurnosSolicitadosMedicoComponent } from './componentes/grafico-barra-turnos-solicitados-medico/grafico-barra-turnos-solicitados-medico.component';
+import { GraficoBarraTurnosFinalizadosMedicoComponent } from './componentes/grafico-barra-turnos-finalizados-medico/grafico-barra-turnos-finalizados-medico.component';
+import { FormatoDiaPipe } from './pipe/formatos/horarios/formato-dia.pipe';
+import { HoraPMAMPipe } from './pipe/formatos/horarios/hora-pmam.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**
  * {"projectId":"clinica-online-97f5a","appId":"1:579207740396:web:b409d01b419ab664c61ec9","storageBucket":"clinica-online-97f5a.appspot.com","locationId":"us-central","apiKey":"AIzaSyCaen2_ua9QOdA-SX418-B2Y76C4gJ0B58","authDomain":"clinica-online-97f5a.firebaseapp.com","messagingSenderId":"579207740396","measurementId":"G-P53GBWZFB9"}
@@ -71,7 +82,15 @@ import { AdministrarHistorialComponent } from './componentes/administrar-histori
     FormularioTurnoComponent,
     HistorialClinicoComponent,
     ListadoHistorialClinicoComponent,
-    AdministrarHistorialComponent
+    AdministrarHistorialComponent,
+    GraficoComponent,
+    MostrarGraficosComponent,
+    GraficoTortaTurnosEspecialidadComponent,
+    GraficoBarraTurnosDiaComponent,
+    GraficoBarraTurnosSolicitadosMedicoComponent,
+    GraficoBarraTurnosFinalizadosMedicoComponent,
+    FormatoDiaPipe,
+    HoraPMAMPipe
   ],
   imports: [
     BrowserModule,
@@ -80,7 +99,10 @@ import { AdministrarHistorialComponent } from './componentes/administrar-histori
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
+    NgxChartsModule,
+    NgChartsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

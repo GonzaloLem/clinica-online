@@ -1,5 +1,8 @@
 <div class="especialidades">
     <ul class="lista">
-        <ul class="item" [ngClass]="especialidad === item.especialidad?'marcado':''" *ngFor="let item of especialidades" (click)="obtenerEspecialidad(item.especialidad)">{{item.especialidad}}</ul>
+        <ul class="item" [ngClass]="especialidad === item.especialidad?'marcado':''" *ngFor="let item of especialidades" (click)="obtenerEspecialidad(item.especialidad)">
+            <!--<span>{{item.especialidad}}</span>-->
+            <img [src]="item.img" class="img">
+        </ul>
     </ul>
 </div>
