@@ -1,0 +1,13 @@
+<section class="contenedor">
+    <div class="cont-header">
+        <div class="header"></div>
+    </div>    
+    <div class="secciones">
+        @for(seccion of secciones; track seccion.nombre) {
+            @if(seccion.mostrar === tipoUsuario || seccion.mostrar === "todos")
+            {
+                <app-carta-seccion [seccion]="seccion"></app-carta-seccion>
+            }
+        }
+    </div>
+</section>

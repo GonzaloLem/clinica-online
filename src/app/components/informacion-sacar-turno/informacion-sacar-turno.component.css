@@ -1,0 +1,22 @@
+.contenedor {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    div {
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 20px;
+        text-align: center;
+        
+        .informacion {
+           .des {
+            margin: 0 5px;
+           }
+    
+        }
+    }
+
+}

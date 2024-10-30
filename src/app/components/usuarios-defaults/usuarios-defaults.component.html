@@ -1,0 +1,19 @@
+<section class="contenedor">
+    @for(usuario of listaUsuariosCargados; track usuario._id) 
+    {
+        <div class="usuario" (click)="outUsuario(usuario)">
+            @if(usuario.tipo === 'paciente')
+            {
+                <img class="img" src="../../../assets/usuarios/paciente.jpg"/>
+            }
+            @else if(usuario.tipo === 'especialista')
+            {
+                <img  class="img" src="../../../assets/usuarios/especialista.jpg"/>
+            }
+            @else 
+            {
+                <img class="img" src="../../../assets/usuarios/administrador.jpg"/>
+            }
+        </div>
+    }
+</section>

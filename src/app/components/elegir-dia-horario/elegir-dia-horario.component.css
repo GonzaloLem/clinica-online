@@ -1,0 +1,73 @@
+.contenedor {
+    height: 100%;
+    align-content: center;
+    text-align: center;
+
+    .lista {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: 20px 0;
+
+        .dia {
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .item .seleccionado {
+            background-color: rgb(0, 82, 159);
+        }
+    }
+
+    .lista.fechas {
+
+        margin: 50px 0;
+        .fecha {
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+    }
+
+    .lista.turnos {
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+        gap: 20px;
+
+
+        .turno {
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+    }
+
+    .btn {
+
+        font-size: xx-large;
+        border: none;
+        background-color: #c51313;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        margin-top: 100px;
+    }
+
+    @media (max-width: 768px) {
+        .lista.turnos {
+            grid-template-columns: repeat(2, minmax(100px, auto));
+        }
+    }
+    
+}

@@ -1,0 +1,32 @@
+<section class="contenedor">
+    <ul class="lista">
+        @for(horario of horarios;track horario._id) {
+            <li class="item" (click)="seleccionarDia(horario)">
+                <span class="dia" [ngClass]="{'seleccionado':horarioSeleccionado?.dia === horario.dia}">{{horario.dia | titlecase}}</span>
+            </li>
+        }
+    </ul>
+    @if(fechasDisponibles.length > 0) {
+        <ul class="lista fechas">
+            @for(fecha of fechasDisponibles; track fecha){
+                <li class="item" (click)="seleccionarFecha(fecha)"><span class="fecha" [ngClass]="{'seleccionado':fechaSeleccionada === fecha}">{{fecha}}</span></li>
+            }
+        </ul>
+    }
+    @if(turnosDisponibles) {
+        <ul class="lista turnos">
+            @if(array.isArray(turnosDisponibles.horario))
+            {   
+                @for(turno of turnosDisponibles.horario; track turnosDisponibles.horario){
+                    <li class="item" (click)="seleccionarHora(turno)"><span class="turno" [ngClass]="{'seleccionado':horaSeleccionada === turno}">{{turno | date:"HH:mm" | formatoAmPm}}</span></li>
+                }
+            }
+
+        </ul>
+        @if(horaSeleccionada)
+        {
+            <button class="btn" (click)="sacarTurno()">Sacar turno</button>
+        }
+    }
+
+</section>

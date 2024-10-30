@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+body
+{
+    padding: 0;
+    margin: 0;
+    height: 100dvh;
+    background-color: #DCDCDC;
+    overflow-x: hidden;
+
+}
+
+main
+{
+    height: calc(100% - 90px);
+
+}
+
+ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

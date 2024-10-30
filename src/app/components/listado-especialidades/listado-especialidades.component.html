@@ -1,0 +1,12 @@
+<section>
+    <h2>Seleccione una especialidad</h2>
+    <ul class="lista">
+        @for(especialidad of especialidades; track especialidad._id) {
+            <li class="item" (click)="outEspecialidad(especialidad)">
+                <img [src]="rutaImagenesEspecialidades+especialidad.urlImagen" alt="imagen de la especialidad">
+                <span>{{especialidad.especialidad | titlecase}}</span>
+            </li>
+        }
+    </ul>
+</section>
+

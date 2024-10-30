@@ -1,0 +1,33 @@
+<section class="contenedor">
+    <div class="fecha">
+        <span>{{fecha.getUTCDate()}}</span>
+        <span>{{meses[fecha.getUTCMonth()] | uppercase}}</span>
+        <span>{{fecha.getUTCFullYear()}}</span>
+    </div>
+    <div class="datos">
+        <h3>{{'Licenciado. '+especialista?.nombre! + ' ' + especialista?.apellido!}}</h3>
+        <h4>{{especialidad | uppercase}} </h4>
+        <p>{{'para '+paciente}}</p>
+        <div>
+            <svg  
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                width="20" height="20" 
+                stroke-width="1.25"> 
+                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path> 
+                <path d="M12 7v5"></path> 
+                <path d="M12 12l2 -3"></path> 
+            </svg> 
+            <span>{{fecha | date:'HH:mm'}}</span>
+        </div>
+        <span class="estado" [ngClass]="{'pendiente': estado === 'pendiente', 'cancelado': estado !== 'pendiente'}">{{estado}}</span>
+        @if(estado === 'pendiente')
+        {
+            <span class="cancelar" (click)="cancelarTurno(idTurno)">Cancelar Turno</span>
+        }
+
+    </div>
+</section>

@@ -1,0 +1,1 @@
+export const USUARIO_LOCAL_STORAGE = JSON.parse(localStorage.getItem("usuario")??"{}");

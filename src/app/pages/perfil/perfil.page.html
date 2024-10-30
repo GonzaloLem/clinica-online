@@ -1,0 +1,112 @@
+<section class="contenedor">
+    <section class="cont perfil">
+        <img [src]="getImagenUsuario()" class="img" alt="foto del usuario">
+        <div class="informacion">
+           <h2 class="titulo">{{this.usuario.nombre}} {{this.usuario.apellido}}</h2>
+           <svg 
+            class="icon icon-tabler icon-tabler-mail" 
+            width="44" 
+            height="44" 
+            viewBox="0 0 24 24" 
+            stroke-width="1.5" 
+            stroke="#000" 
+            fill="none" 
+            stroke-linecap="round" 
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+            <path d="M3 7l9 6l9 -6" />
+          </svg>
+          <span>{{this.usuario.email}}</span>
+          <svg  width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+            <path d="M16 3v4" />
+            <path d="M8 3v4" />
+            <path d="M4 11h16" />
+            <path d="M7 14h.013" />
+            <path d="M10.01 14h.005" />
+            <path d="M13.01 14h.005" />
+            <path d="M16.015 14h.005" />
+            <path d="M13.015 17h.005" />
+            <path d="M7.01 17h.005" />
+            <path d="M10.01 17h.005" />
+          </svg>
+          <span>{{this.usuario.edad}}</span>
+          <svg  class="icon icon-tabler icon-tabler-id-badge-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M7 12h3v4h-3z" />
+            <path d="M10 6h-6a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1 -1v-12a1 1 0 0 0 -1 -1h-6" />
+            <path d="M10 3m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+            <path d="M14 16h2" />
+            <path d="M14 12h4" />
+          </svg>
+          <span>{{this.usuario.dni | formatoDni}}</span>
+          @if(this.usuario.tipo === "paciente")
+          {
+            <svg  width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fd0061" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 21l18 0" />
+                <path d="M5 21v-14l8 -4v18" />
+                <path d="M19 21v-10l-6 -4" />
+                <path d="M9 9l0 .01" />
+                <path d="M9 12l0 .01" />
+                <path d="M9 15l0 .01" />
+                <path d="M9 18l0 .01" />
+              </svg>
+            <span>{{usuario?.obraSocial}}</span>
+          }
+        </div>
+        @if(this.usuario.tipo === "especialista") {
+        <svg 
+          (click)="mostrarEspecialidades = true"
+          class="icono-especialista"
+          width="44" 
+          height="44" 
+          viewBox="0 0 24 24" 
+          stroke-width="1.5" 
+          stroke="#000" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1" />
+          <path d="M8 15a6 6 0 1 0 12 0v-3" />
+          <path d="M11 3v2" />
+          <path d="M6 3v2" />
+          <path d="M20 10m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+        </svg>
+        <svg 
+        class="iconos-mas"
+        width="25" 
+        height="25" 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 448 512">
+        <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+      </svg>
+      }
+    </section>
+
+    @if(this.usuario.tipo === "especialista")  
+    {
+      <section class="especialidades">
+        @for(especialidad of this.usuario.especialidades; track especialidad._id) {
+          <app-especialidad 
+          [especialidad]="especialidad" 
+          [especialista]="this.usuario"
+          >
+        </app-especialidad>
+        }
+      </section>
+    }
+
+    <button class="btn" (click)="cerrarSesion()">Cerrar Sesión</button>
+</section>
+@if(mostrarEspecialidades) {
+  <app-especialidades 
+    [seleccionarMultiples]="false" 
+    (outPutEspecialidades)="obtenerEspecialidades($event)" 
+    (outPutCerrarModal)="mostrarEspecialidades = !$event"
+  >
+  </app-especialidades>
+}

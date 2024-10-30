@@ -1,0 +1,28 @@
+<section class="contenedor">
+    <!--@if(usuario.tipo === 'paciente')-->
+    <!--{
+        <ul>
+            <li>
+                <app-mostrar-turno></app-mostrar-turno>
+            </li>
+        </ul>
+    }-->
+    <!--@else{
+
+} -->
+    <ul class="lista">
+        @for(turno of turnos; track turno._id) {
+            <li class="item">
+                <app-mostrar-turno
+                [idTurno]="turno._id!"
+                [especialista]="turno.especialista!"
+                [especialidad]="turno.especialidad?.especialidad!"
+                [paciente]="turno.paciente?.nombre!"
+                [fecha]="turno.fecha"
+                [estado]="turno.estado"
+                >
+                </app-mostrar-turno>
+            </li>
+        }
+    </ul>
+</section>

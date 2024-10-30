@@ -1,0 +1,71 @@
+.contenedor {
+    display: flex;
+
+    .fecha {
+        width: 140px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+
+        align-content: center;
+        background-color: brown;
+        span {
+            display: block;
+            text-align: center;
+            font-weight: bold;
+            color: rgb(255, 254, 253);
+            
+        }
+    }
+
+    .datos {
+        width: 300px;
+        background-color: rgb(215, 215, 215);
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 1fr;
+
+        padding: 10px;
+
+        h3 {
+            grid-column: 1/5;
+        }
+        h4 {
+            grid-column: 1/5;
+            color: #8d8b8b;
+        }
+        p {
+            grid-column: 1/5;
+            color: #8d8b8b;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 0 10px 0 0;
+        }
+        span {
+            align-content: center;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        span.cancelar {
+            color: rgb(168, 0, 0);
+            cursor: pointer;
+        }
+    }
+
+}
+
+.pendiente {
+    background-color: #d2b305 !important;
+    color: #000 !important;
+}
+
+.cancelado {
+    background-color: #ff0000 !important;
+    color: #fff !important;
+}

@@ -1,0 +1,12 @@
+<section>
+    <h2>Seleccione un especialista</h2>
+    <ul class="lista">
+        @for(especialista of especialistas; track especialista._id) {
+            <li class="item" (click)="outEspecialista(especialista)">
+                <img [src]="rutaImagenesEspecialistas+especialista.urlImagen" alt="imagen del especialista">
+                <span>{{especialista.nombre | titlecase}} {{especialista.apellido | titlecase}}</span>
+            </li>
+        }
+    </ul>
+</section>
+

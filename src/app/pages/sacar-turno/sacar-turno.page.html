@@ -1,0 +1,66 @@
+<section class="contenedor">
+    <app-informacion-sacar-turno 
+    [especialidad]="especialidadSeleccionada!"
+    [especialista]="especialistaSeleccionado!"
+    [dia]="dia!"
+    [fecha]="fecha!"
+    [horario]="horario!"
+    >
+    </app-informacion-sacar-turno>
+    <section class="seleccionar">
+        @if(seccion === 1){
+
+            <app-listado-especialidades (outPutEspecialidad)="obtenerEspecialidad($event)"></app-listado-especialidades>
+        }
+        @if(seccion === 2) {
+
+            <app-listado-especialistas [especialidad]="especialidadSeleccionada"  (outPutEspecialista)="obtenerEspecialista($event)"></app-listado-especialistas>   
+        }
+        @if(seccion === 3) {
+            <app-elegir-dia-horario 
+                (outPutDia)="dia = $event!"
+                (outPutFecha)="fecha = $event!"
+                (outPutHorario)="horario = $event!"
+                [paciente]="paciente!" 
+                [especialista]="especialistaSeleccionado" 
+                [especialidad]="especialidadSeleccionada">
+            </app-elegir-dia-horario>
+    }
+    </section>
+    <div class="flechas">
+        <button class="flecha atras" (click)="anteriorSeccion()">
+            <svg 
+                width="44" 
+                height="44" 
+                viewBox="0 0 24 24" 
+                stroke-width="1.5" 
+                stroke="#2c3e50" 
+                fill="none" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"
+                >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M18 12h-15" />
+                <path d="M6 9l-3 3l3 3" />
+                <path d="M21 9l-3 3l3 3" />
+            </svg>
+        </button>
+        <button class="flecha adelante" (click)="siguenteSeccion()" [disabled]="deshabilitarFlecha">
+            <svg 
+                width="44" 
+                height="44" 
+                viewBox="0 0 24 24" 
+                stroke-width="1.5" 
+                stroke="#2c3e50" 
+                fill="none" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"
+                >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M18 15l3 -3l-3 -3" />
+                <path d="M3 15l3 -3l-3 -3" />
+                <path d="M6 12l15 0" />
+              </svg>
+        </button>
+    </div>
+</section>

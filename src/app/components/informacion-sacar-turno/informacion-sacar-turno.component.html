@@ -1,0 +1,19 @@
+<div class="contenedor">
+    <div>   
+        <h2>Información del turno</h2>
+        <div class="informacion">
+            <h3 class="titulo">Especialidad seleccionada</h3>
+            <span class="descripcion">{{especialidad?.especialidad | titlecase}}</span>
+            <h3 class="titulo">Especialista</h3>
+            <span class="des">{{especialista?.apellido}}</span>
+            <span class="des">{{especialista?.nombre}}</span>
+            <h3 class="titulo">Día y horario</h3>
+            <div>
+                <span class="des">{{dia | titlecase}}</span>
+                <span class="des">{{fecha}}</span>
+                <span class="des">{{horario | date:'HH:mm'}}</span>
+            </div>
+    
+        </div>
+    </div>
+</div>

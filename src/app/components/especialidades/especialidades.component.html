@@ -1,0 +1,35 @@
+<section class="contenedor modal">
+    <div>
+        <svg
+            (click)="outPutCerrarModal.emit(true)"
+            class="icono"
+            width="44" 
+            height="44" 
+            viewBox="0 0 24 24" 
+            stroke-width="1.5" 
+            stroke="#ff2825" 
+            ill="none" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+            >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
+          </svg> 
+        <ul class="lista">
+            @for(especialidad of especialidades; track  especialidad._id) 
+            {
+                <li class="item">
+                    <img 
+                        class="img" 
+                        [ngClass]="{ 'seleccionada': estaSeleccionada(especialidad) }"
+                        src="{{urlEspecialidadImagen+especialidad.urlImagen}}" 
+                        alt="imagende la especialidad {{especialidad.especialidad}}"
+                        (click)="seleccionarEspecialidad(especialidad)"
+                    >
+                </li>
+            }
+        </ul>
+        <button class="btn" (click)="outEspecialidades()">Seleccionar</button>
+    </div>
+</section>

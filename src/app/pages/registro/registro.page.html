@@ -1,0 +1,77 @@
+<section class="contenedor">
+    <section class="logo">
+        <p class="frase">Consultas médicas <br> desde la comodidad de tu hogar.</p>
+        <img src="../../../assets/logo-clinica.png" alt="logo">
+    </section>
+    <section class="contenedor-formulario">
+        <form action="post" class="formulario" [formGroup]="formulario">
+            <img src="../../../assets/usuario-default.png" class="img" alt="foto del usuario">
+            <div class="grupo">
+                <label for="txtNombre" class="texto">Nombre</label>
+                <input type="text" name="Nombre" id="txtNombre" class="input" formControlName="txtNombre" placeholder="Ingrese su nombre">
+            </div>
+            <div class="grupo">
+                <label for="txtApellido" class="texto">Apellido</label>
+                <input type="text" name="Apellido" id="txtApellido" class="input" formControlName="txtApellido" placeholder="Ingrese su apellido">
+            </div>
+            <div class="grupo">
+                <label for="txtEdad" class="texto">Edad</label>
+                <input type="text" name="Edad" id="txtEdad" class="input" formControlName="txtEdad" placeholder="Ingrese su Edad">
+            </div>
+            <div class="grupo">
+                <label for="txtDni" class="texto">DNI</label>
+                <input type="text" name="Dni" id="txtDni" class="input" formControlName="txtDni" placeholder="Ingrese su DNI">
+            </div>
+            <div class="grupo">
+                <label for="txtCorreo" class="texto">Correo</label>
+                <input type="text" name="Correo" id="txtCorreo" class="input" formControlName="txtEmail" placeholder="Ingrese su correo">
+            </div>
+            <div class="grupo">
+                <label for="txtPassword" class="texto">Contraseña</label>
+                <input type="password" name="Password" id="txtPassword" class="input" formControlName="txtPassword" placeholder="Ingrese su Contraseña">
+            </div>
+            @if(tipo==="paciente")
+            {
+                <div class="grupo usuario">
+                    <label for="txtObraSocial" class="texto">Obra social</label>
+                    <input type="text" name="Edad" id="txtObraSocial" class="input" formControlName="txtObraSocial" placeholder="Ingrese su obra social">
+                </div>
+            }
+            @else {
+                <div class="grupo usuario">
+                    <label class="texto">Especialidades</label>
+                        <ul class="lista">
+                    @for(especialidad of especialidades; track especialidad._id) {
+                        <li class="item"><span>{{especialidad.especialidad | titlecase}}</span></li>
+                    }
+                        </ul>
+                    <button class="btn" (click)="ocultarModalEspecialidades = false">Seleccionar</button>
+                </div>
+            }
+            <div class="wide">
+                <div class="contenedor-tipo" (click)="cambiarTipo()">
+                    <span class="tipo">Paciente</span>
+                    <span class="tipo">Especialista</span>
+                    <div 
+                        class="seleccionado" 
+                        [ngStyle]="tipo === 'paciente' ? { 'transform': 'translateX(' + 0 + 'px)' } : { 'transform': 'translateX(' + 113.56 + 'px)' }"
+                        [ngClass]="{'slide-in-right': tipo === 'paciente', 'slide-in-left': tipo === 'especialista'}"
+                    >
+                    
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="opciones">
+            <p class="texto">¿Ya tienes cuenta? <a href="/login" class="ancor">Haz Click aquí</a></p>
+            <button class="btn registro" (click)="registro()">Registrarse</button>
+        </div>
+    </section>
+</section>
+
+@if(!ocultarModalEspecialidades)
+{
+    <app-especialidades [especialidadesPreSeleccionadas]="especialidades" (outPutCerrarModal)="ocultarModalEspecialidades = $event" (outPutEspecialidades)="obtenerEspecialidades($event)"></app-especialidades>
+}
+
+

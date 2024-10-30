@@ -1,0 +1,66 @@
+<section class="modal">
+    <div class="contenedor">
+        <svg 
+            (click)="outPutCerrarModal.emit(true)"
+            class="icono" 
+            width="35" height="35" 
+            viewBox="0 0 24 24" 
+            stroke-width="1.5" 
+            stroke="#000000" 
+            fill="none" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+            >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
+          </svg>
+        <h2>{{especialidad?.especialidad | titlecase}}</h2>
+        <h3>Seleccione un día</h3>
+        <ul class="lista">
+            @for(dia of dias; track dia) {
+                <li class="item" (click)="seleccionarDia(dia)">
+                    @if(dia === diaSeleccionado)
+                    {
+                        <svg  
+                        width="25" 
+                        height="25" 
+                        viewBox="0 0 24 24" 
+                        stroke-width="1.5" 
+                        stroke="#c51313" 
+                        fill="none" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    }
+                    <span>{{dia | titlecase}}</span>
+                </li>
+            }
+        </ul>
+        <section class="horario" [formGroup]="formulario">
+            <h4>Comienzo del Turno</h4>
+            <input 
+                type="text" 
+                [ngStyle]="{ 'border-color': formulario.get('txtComienzoTurno')?.touched && formulario.get('txtComienzoTurno')?.invalid? '#ff0000':'transparent'}" 
+                name="comienzoTurno" 
+                id="txtComienzoTurno" 
+                maxlength="5" 
+                formControlName="txtComienzoTurno" 
+                (input)="formatoHoraInput('txtComienzoTurno')"
+            >
+            <h4>Fin del turno</h4>
+            <input 
+                type="text" 
+                [ngStyle]="{ 'border-color': formulario.get('txtFinTurno')?.touched && formulario.get('txtFinTurno')?.invalid? '#ff0000':'transparent'}" 
+                name="finTurno" 
+                id="txtFinTurno" 
+                maxlength="5" 
+                formControlName="txtFinTurno" 
+                (input)="formatoHoraInput('txtFinTurno')"
+            >
+        </section>
+        <button (click)="insertarDisponibilidad()">{{!modificar? 'Agregar Turno':'Modificar Turno'}}</button>
+    </div>
+</section>
