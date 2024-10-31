@@ -17,6 +17,6 @@ export class AutenticacionService
       const formData = new FormData();
 
       formData.append("usuario", JSON.stringify({email:email, password:password}));
-      return await firstValueFrom(this.http.post(`${API_CLINICA}/autenticacion/login`, formData)) as Peticion;
+      return await firstValueFrom(this.http.post(`${API_CLINICA}/autenticacion/login`, formData)) as any;
     }
 }
